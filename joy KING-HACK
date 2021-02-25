@@ -1,1 +1,30 @@
 HACK\SP-XORA NI bos!
+--------------------
+const Discord = require ("discord.js");
+const bot = new Discord.Client();
+
+const prefix ="!!";
+bot.on("ready", function (){
+  bot.user.setActivity("hai saya bot")
+  console.log(${bot.user.tag} bot sudah aktif);
+
+})
+
+bot.on("message", async message =>{
+  if(!message.guild) return;
+  if(!message.content.startswith(prefix)) return;
+  if(message.author.bot) return;
+  if (message.channel.type ==="dm") return;
+
+  let args = message.content.slice(prefix.length).trim().split(" ");
+  let command = args.shift().tolowerCase();
+
+  //commands
+  if(message.content ===${prefix}ping) {
+    message.channel.send("ping_pong: PONG!");
+  }
+
+
+
+})
+bot.login(process.env.BOT_TOKEN);
